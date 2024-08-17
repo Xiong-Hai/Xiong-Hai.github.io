@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xiong-Hai">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一、下载docker离线安装包并安装1.1 下载docker离线安装包下载合适版本，以linux_x86_64为例下载地址：Index of linux&#x2F;static&#x2F;stable&#x2F;x86_64&#x2F; (docker.com)本次下载的是docker-23.0.0.tgz然后解压缩后有以下文件： 123456789101112[root@192 docker]#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker离线安装">
+<meta property="og:url" content="https://xiong-hai.github.io/2023/12/10/Docker%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、下载docker离线安装包并安装1.1 下载docker离线安装包下载合适版本，以linux_x86_64为例下载地址：Index of linux&#x2F;static&#x2F;stable&#x2F;x86_64&#x2F; (docker.com)本次下载的是docker-23.0.0.tgz然后解压缩后有以下文件： 123456789101112[root@192 docker]#">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://xiong-hai.github.io/2023/12/10/Docker%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/docker-mysql.png">
+<meta property="article:published_time" content="2023-12-10T11:54:01.000Z">
+<meta property="article:modified_time" content="2024-08-17T09:59:56.403Z">
+<meta property="article:author" content="Xiong-Hai">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://xiong-hai.github.io/2023/12/10/Docker%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/docker-mysql.png">
+  
+  
+  
+  <title>Docker离线安装 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"xiong-hai.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Docker离线安装"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-10 19:54" pubdate>
+          2023年12月10日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          11 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Docker离线安装</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="一、下载docker离线安装包并安装"><a href="#一、下载docker离线安装包并安装" class="headerlink" title="一、下载docker离线安装包并安装"></a>一、下载docker离线安装包并安装</h3><h4 id="1-1-下载docker离线安装包"><a href="#1-1-下载docker离线安装包" class="headerlink" title="1.1 下载docker离线安装包"></a>1.1 下载docker离线安装包</h4><p>下载合适版本，以linux_x86_64为例下载地址：<a target="_blank" rel="noopener" href="https://download.docker.com/linux/static/stable/x86_64/">Index of linux&#x2F;static&#x2F;stable&#x2F;x86_64&#x2F; (</a><a target="_blank" rel="noopener" href="http://docker.com/">docker.com</a><a target="_blank" rel="noopener" href="https://download.docker.com/linux/static/stable/x86_64/">)</a>本次下载的是<code>docker-23.0.0.tgz</code>然后解压缩后有以下文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@192 docker]# tar -zxvf docker-23.0.0.tgz <br><br>[root@192 /]# ls -l /docker/<br>总用量 179180<br>-rwxr-xr-x. 1 admin admin 38203392 2月   2 2023 containerd<br>-rwxr-xr-x. 1 admin admin  9752576 2月   2 2023 containerd-shim-runc-v2<br>-rwxr-xr-x. 1 admin admin 19152896 2月   2 2023 ctr<br>-rwxr-xr-x. 1 admin admin 34498624 2月   2 2023 docker<br>-rwxr-xr-x. 1 admin admin 64941936 2月   2 2023 dockerd<br>-rwxr-xr-x. 1 admin admin   765808 2月   2 2023 docker-init<br>-rwxr-xr-x. 1 admin admin  1945195 2月   2 2023 docker-proxy<br>-rwxr-xr-x. 1 admin admin 14214368 2月   2 2023 runc<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2然后将这些文件复制到-usr-bin执行文件目录下并赋予执行权限"><a href="#1-2然后将这些文件复制到-usr-bin执行文件目录下并赋予执行权限" class="headerlink" title="1.2然后将这些文件复制到&#x2F;usr&#x2F;bin执行文件目录下并赋予执行权限"></a>1.2然后将这些文件复制到&#x2F;usr&#x2F;bin执行文件目录下并赋予执行权限</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@192 docker]# cp /docker/* /usr/bin/<br><br>[root@192 docker]# chmod +x /usr/bin/containerd<br>[root@192 docker]# chmod +x /usr/bin/containerd-shim-runc-v2<br>[root@192 docker]# chmod +x /usr/bin/ctr<br>[root@192 docker]# chmod +x /usr/bin/docker<br>[root@192 docker]# chmod +x /usr/bin/dockerd<br>[root@192 docker]# chmod +x /usr/bin/docker-init<br>[root@192 docker]# chmod +x /usr/bin/docker-proxy<br>[root@192 docker]# chmod +x /usr/bin/runc<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3启动docker并验证是否安装成功"><a href="#1-3启动docker并验证是否安装成功" class="headerlink" title="1.3启动docker并验证是否安装成功"></a>1.3启动docker并验证是否安装成功</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@192 /]# sudo /usr/bin/dockerd &amp;<br>[1] 26695<br>[root@192 /]# INFO[2023-12-11T01:18:51.209522829+08:00] Starting up    <br><br>[root@192 /]# docker -v<br>Docker version 23.0.0, build e92dd87<br>[root@192 /]# docker ps -a<br>CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES<br></code></pre></td></tr></table></figure>
+
+<p>看到docker版本号即为安装成功</p>
+<h4 id="1-4配置docker开机自启动"><a href="#1-4配置docker开机自启动" class="headerlink" title="1.4配置docker开机自启动"></a>1.4配置docker开机自启动</h4><p>打开终端并以管理员身份登录到目标机器。检查系统是否已经安装了 <code>systemd</code> 服务管理器。大多数现代 Linux 发行版都使用 <code>systemd</code>。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@192 /]# systemctl --version<br>systemd 219<br>+PAM +AUDIT +SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 -SECCOM<br><br>//创建docker.service文件<br>[root@192 system]# vim /etc/systemd/system/docker.service<br>//添加以下内容<br>[Unit]<br>Description=Docker Service<br>Wants=network.target<br>After=network.target<br><br>[Service]<br>ExecStart=/usr/bin/dockerd<br>Restart=always<br>StartLimitBurst=3<br>StartLimitInterval=60s<br>LimitNOFILE=infinity<br>LimitNPROC=infinity<br>LimitCORE=infinity<br>TasksMax=infinity<br><br>[Install]<br>WantedBy=multi-user.target<br></code></pre></td></tr></table></figure>
+
+<p>保存并关闭<code>docker.service</code>文件，先停止docker服务进程在执行以下操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">//执行以下命令启用 Docker 服务：<br>[root@192 system]# systemctl enable docker.service<br><br>//执行以下命令启动 Docker 服务：<br>[root@192 system]# systemctl start docker.service<br><br>//执行以下命令检查 Docker 服务的状态：<br>[root@192 ~]# systemctl status docker.service<br>● docker.service - Docker Application Container Engine<br>   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)<br>   Active: active (running) since 一 2023-12-11 02:22:27 CST; 28s ago<br>     Docs: http://docs.docker.com<br> Main PID: 4166 (dockerd-current)<br>    Tasks: 17<br>   CGroup: /system.slice/docker.service<br>           ├─4166 /usr/bin/dockerd-current --add-runtime docker-runc=/usr/libexec/docker/docker-runc-current --default-runtime=docker-runc --exec-opt native.cgroupdriver=systemd --userland-proxy-path=/usr...           └─4171 /usr/bin/docker-containerd-current -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --state-dir /var/run/docker/libcontainerd/contai...<br></code></pre></td></tr></table></figure>
+
+<h3 id="二、离线安装image"><a href="#二、离线安装image" class="headerlink" title="二、离线安装image"></a>二、离线安装image</h3><h4 id="2-1准备离线安装镜像"><a href="#2-1准备离线安装镜像" class="headerlink" title="2.1准备离线安装镜像"></a>2.1准备离线安装镜像</h4><p>先在线环境中准备 Docker 镜像，在可联网的环境中使用 <code>docker pull</code> 命令下载所需的 Docker 镜像。拉取之后可以查看，之后使用<code>docker save -o image.tar image:tag</code>将镜像保存为存为 tar 归档文件，再上传到离线安装的服务器环境中去</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@iZbp11pk9q75cmizeab62bZ ~]# docker images<br>REPOSITORY                  TAG       IMAGE ID       CREATED         SIZE<br>nginx                       latest    eea7b3dcba7e   3 months ago    187MB<br>mysql                       8.0.31    7484689f290f   12 months ago   538MB<br>bladex/sentinel-dashboard   latest    aa398704ebd3   3 years ago     147MB<br><br>[root@iZbp11pk9q75cmizeab62bZ ~]# docker save -o mysql_8.0.31.tar mysql:8.0.31<br>[root@iZbp11pk9q75cmizeab62bZ docker]# ll<br>总用量 602828<br>drwxrwxr-x. 2 admin admin       146 2月   2 2023 docker<br>-rw-r--r--. 1 root  root  550466048 12月 11 02:28 mysql_8.0.31.tar<br>docker save -o image.tar image:tag<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-离线拉取镜像"><a href="#2-2-离线拉取镜像" class="headerlink" title="2.2 离线拉取镜像"></a>2.2 离线拉取镜像</h4><p>使用<code>docker load -i image.tar</code>将归档文件mysql镜像安装使用<code>docker images</code>验证镜像是否拉取成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@192 docker]# docker load -i /docker/mysql_8.0.31.tar <br>d3cc7b6aa7bc: Loading layer [==================================================&gt;]  109.2MB/109.2MB<br>a7f421510691: Loading layer [==================================================&gt;]  11.26kB/11.26kB<br>6ac2db160c6c: Loading layer [==================================================&gt;]  2.293MB/2.293MB<br>7fe65049a2a9: Loading layer [==================================================&gt;]  13.92MB/13.92MB<br>da1824686db3: Loading layer [==================================================&gt;]  7.168kB/7.168kB<br>d410d4efd0e7: Loading layer [==================================================&gt;]  3.072kB/3.072kB<br>60c4dab21dc3: Loading layer [==================================================&gt;]  178.4MB/178.4MB<br>d00057f89692: Loading layer [==================================================&gt;]  3.072kB/3.072kB<br>2f42ce9d7b80: Loading layer [==================================================&gt;]  246.5MB/246.5MB<br>8408fed6a9d6: Loading layer [==================================================&gt;]  17.41kB/17.41kB<br>336175ddf157: Loading layer [==================================================&gt;]  1.536kB/1.536kB<br>Loaded image: mysql:8.0.31<br><br>[root@192 docker]# docker images<br>REPOSITORY   TAG       IMAGE ID       CREATED         SIZE<br>mysql        8.0.31    7484689f290f   12 months ago   538MB<br></code></pre></td></tr></table></figure>
+
+<h3 id="三、docker-compose安装"><a href="#三、docker-compose安装" class="headerlink" title="三、docker-compose安装"></a>三、docker-compose安装</h3><h4 id="3-1下载docker-compose并安装"><a href="#3-1下载docker-compose并安装" class="headerlink" title="3.1下载docker-compose并安装"></a>3.1下载docker-compose并安装</h4><p>Docker Compose 是Docker的组装工具，用于创建和调试多个Docker容器，并在同一个Docker主机上运行它们。Docker Compose基于YAML文件，描述多个容器之间的相互关系，以及每个容器所需要的配置和环境变量。</p>
+<p>Docker Compose和Docker版本对应关系：<a target="_blank" rel="noopener" href="https://docs.docker.com/compose/compose-file/compose-file-v3/">https://docs.docker.com/compose/compose-file/compose-file-v3/</a></p>
+<p>Docker Compose下载地址：<a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases">Releases · docker&#x2F;compose (</a><a target="_blank" rel="noopener" href="http://github.com/">github.com</a><a target="_blank" rel="noopener" href="https://github.com/docker/compose/releases">)</a></p>
+<p>将下载的<code>docker-compose-linux-x86_64</code>文件上传到离线服务器移动目录改名授权后使用<code>docker-compose --version</code>看到版本号即安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@192 docker]# ll<br>总用量 660820<br>drwxrwxr-x. 2 admin admin       146 2月   2 2023 docker<br>-rw-r--r--. 1 root  root   66824010 12月 11 01:04 docker-23.0.0.tgz<br>-rw-r--r--. 1 root  root   59383631 12月 11 02:54 docker-compose-linux-x86_64<br>-rw-r--r--. 1 root  root  550466048 12月 11 02:28 mysql_8.0.31.tar<br><br>//将docker-compose-linux-x86_64文件移动到/usr/local/bin/目录下并改名<br>[root@192 docker]# sudo mv /docker/docker-compose-linux-x86_64 /usr/local/bin/docker-compose<br><br>//授予执行权限<br>[root@192 docker]# chmod +x /usr/local/bin/docker-compose <br><br>//验证是否成功<br>[root@192 docker]# docker-compose --version<br>Docker Compose version v2.20.3<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2docker-compose启动"><a href="#3-2docker-compose启动" class="headerlink" title="3.2docker-compose启动"></a>3.2docker-compose启动</h4><p>对已经拉取的<code>mysql:8.0.31</code>镜像使用<code>docker-compose</code>启动</p>
+<p>创建一个名为 <code>docker-compose.yml</code> 的文件，并在其中定义服务配置，使用离线拉取的<code>mysql:8.0.3</code>镜像启动容器，文件内容不做讲解，文件内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs yaml"> <span class="hljs-attr">1 version:</span> <span class="hljs-string">&#x27;3.0&#x27;</span><br> <span class="hljs-attr">2 services:</span><br> <span class="hljs-attr">3   mysql:</span><br> <span class="hljs-attr">4     image:</span> <span class="hljs-string">mysql:8.0.31</span><br> <span class="hljs-attr">5     container_name:</span> <span class="hljs-string">mysql</span><br> <span class="hljs-attr">6     restart:</span> <span class="hljs-string">always</span><br> <span class="hljs-attr">7     ports:</span><br> <span class="hljs-number">8</span>       <span class="hljs-bullet">-</span> <span class="hljs-number">3306</span><span class="hljs-string">:3306</span><br> <span class="hljs-attr">9     environment:</span><br><span class="hljs-attr">10       MYSQL_ROOT_PASSWORD:</span> <span class="hljs-string">password</span><br><span class="hljs-attr">11     volumes:</span><br><span class="hljs-number">12</span>       <span class="hljs-bullet">-</span> <span class="hljs-string">/docker/mysql/data:/var/lib/mysql</span><br><span class="hljs-attr">13     networks:</span><br><span class="hljs-number">14</span>       <span class="hljs-bullet">-</span> <span class="hljs-string">mynetwork</span><br><span class="hljs-number">15</span> <br><span class="hljs-attr">16 networks:</span><br><span class="hljs-attr">17   mynetwork:</span>  <br></code></pre></td></tr></table></figure>
+
+<p>使用命令<code>docker-compose up -d</code>启动使用<code>docker-compose ps</code>验证，看到容器启动表示成功，进入容器内容执行命令检验</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@192 docker]# docker-compose up -d<br>[+] Running 2/2<br> ✔ Network docker_mynetwork  Created                                                                                                                                                                      0.1s <br> ✔ Container mysql           Started                                                                                                                                                                      0.1s<br><br>[root@192 docker]# docker-compose ps<br>NAME                IMAGE               COMMAND                  SERVICE             CREATED             STATUS              PORTS<br>mysql               mysql:8.0.31        &quot;docker-entrypoint.s…&quot;   mysql               5 minutes ago       Up 6 seconds        0.0.0.0:3306-&gt;3306/tcp, 33060/tcp<br>[root@192 docker]# docker-compose exec mysql mysql -u root -p <br>Enter password: <br>Welcome to the MySQL monitor.  Commands end with ; or \g.<br>Your MySQL connection id is 9<br>Server version: 8.0.31 MySQL Community Server - GPL<br><br>Copyright (c) 2000, 2022, Oracle and/or its affiliates.<br><br>Oracle is a registered trademark of Oracle Corporation and/or its<br>affiliates. Other names may be trademarks of their respective<br>owners.<br><br>Type &#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">mysql&gt; </span><span class="language-bash">show databases;</span><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>| sys                |<br>+--------------------+<br>4 rows in set (0.01 sec)<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">mysql&gt; </span><br></code></pre></td></tr></table></figure>
+
+<p>用navicat连接工具测试成功</p>
+<p><img src="/2023/12/10/Docker%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85/docker-mysql.png" srcset="/img/loading.gif" lazyload></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Docker离线安装</div>
+      <div>https://xiong-hai.github.io/2023/12/10/Docker离线安装/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Xiong-Hai</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年12月10日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/19/Kafka%E6%95%B4%E5%90%88/" title="Kafka整合">
+                        <span class="hidden-mobile">Kafka整合</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
